@@ -33,6 +33,9 @@ describe('Mongoose Model Validator ->', () => {
         'should validate `42` equal `42`': () => {
           expect(42).to.eql(42);
         },
+        'should validate modelName': () => {
+          expect(Model1.modelName).to.eql('Model1');
+        },
       },
     },
   }));
