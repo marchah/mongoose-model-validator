@@ -18,8 +18,9 @@ toValidate Syntax
   plugins: <Array<String>>, // supported plugins: ['creator', 'elastic', 'file', 'timestamp', 'unique'] (not fully supported yet)
   validation: {
     required: <Array<String>>, // required field names
+    enum: <Object<String(field name), Array>>
     // TODO: other checks
-    custom: <Object<String, Function>>,
+    custom: <Object<String(test title), Function>>,
   },
 }
 ````
