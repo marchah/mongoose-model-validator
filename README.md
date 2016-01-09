@@ -38,6 +38,10 @@ describe('Contact ->', modelValidator(Contact, {
     plugins: ['timestamp', 'creator', 'elastic'],
     validation: {
       required: ['field3', 'field4.nested_field3', 'field5'],
+      enum: {
+        'types': ['consignee', 'invalid', 'notify'],
+        'description': ['K', 'UK'],
+      },
       custom: {
         'should throw: Error: done() invoked with non-Error: custom done()': (done) => {
           done('custom done()');
