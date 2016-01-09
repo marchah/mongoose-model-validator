@@ -16,6 +16,7 @@ describe('Mongoose Model Validator ->', () => {
     plugins: 'invalid',
     validation: {
       custom: [],
+      enum: [],
     },
   }));
   describe('Test 3 ->', lib(Model1, {
@@ -23,6 +24,10 @@ describe('Mongoose Model Validator ->', () => {
     plugins: ['timestamp', 'invalid', 'creator', 'elastic'],
     validation: {
       required: ['types', 'name', 'company'],
+      enum: {
+        'types': ['consignee', 'invalid', 'notify'],
+        'description': ['K', 'UK'],
+      },
       custom: {
         'should throw: Error: done() invoked with non-Error: custom done()': (done) => {
           done('custom done()');
@@ -44,6 +49,9 @@ describe('Mongoose Model Validator ->', () => {
     plugins: [],
     validation: {
       required: ['field3', 'field4.nested_field3', 'field5', 'field5.nested_field3', 'field7', 'field8', 'field9.nested_field3', 'field10', 'field10.nested_field3', 'field11', 'field12'],
+      enum: {
+        'field1': 'field1',
+      },
     },
   }));
 });
