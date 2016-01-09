@@ -15,9 +15,9 @@ toValidate Syntax
 ````javascript
 {
   modelName: <String>,
-  plugins: <Array<String>>, // supported plugins: ['creator', 'elastic', 'file', 'timestamp', 'unique'] (not fully supported yet)
+  plugins: <Array<String(plugin name)>>, // supported plugins: ['creator', 'elastic', 'file', 'timestamp', 'unique'] (not fully supported yet)
   validation: {
-    required: <Array<String>>, // required field names
+    required: <Array<String(field name)>>, // required field names
     enum: <Object<String(field name), Array>>
     // TODO: other checks
     custom: <Object<String(test title), Function>>,
