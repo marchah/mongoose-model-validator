@@ -21,6 +21,7 @@ describe('Mongoose Model Validator ->', () => {
       min: [],
       max: [],
       minlength: [],
+      maxlength: [],
       custom: [],
     },
   }));
@@ -49,6 +50,10 @@ describe('Mongoose Model Validator ->', () => {
       minlength: {
         'email': 21,
         'name': 2,
+      },
+      maxlength: {
+        'address': 42,
+        'email': 42,
       },
       custom: {
         'should throw: Error: done() invoked with non-Error: custom done()': (done) => {
