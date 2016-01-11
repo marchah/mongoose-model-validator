@@ -16,6 +16,7 @@ describe('Mongoose Model Validator ->', () => {
     plugins: 'invalid',
     validation: {
       unique: [],
+      default: [],
       custom: [],
       enum: [],
     },
@@ -26,6 +27,10 @@ describe('Mongoose Model Validator ->', () => {
     validation: {
       required: ['types', 'name', 'company'],
       unique: ['types', 'email', 'fax', 'company'],
+      default: {
+        'types': 'consignee',
+        'address': 'Unknown',
+      },
       enum: {
         'types': ['consignee', 'invalid', 'notify'],
         'description': ['K', 'UK'],
@@ -52,6 +57,20 @@ describe('Mongoose Model Validator ->', () => {
     validation: {
       required: ['field3', 'field4.nested_field3', 'field5', 'field5.nested_field3', 'field7', 'field8', 'field9.nested_field3', 'field10', 'field10.nested_field3', 'field11', 'field12'],
       unique: ['field10'],
+      default: {
+        'field2': 'Unknow',
+        'field4': {
+          'nested_field1': 'Unknow',
+          'nested_field2': 'Unknow',
+          'nested_field3': 'Unknow',
+        },
+        'field5.nested_field1': () => {return 'Unknow';},
+        'field5.nested_field3': 'Unknow',
+        'field7': () => {return 'Unknow';},
+        'field8': ['Unknow'],
+        'field9': [],
+        'field12': 'Unknow',
+      },
       enum: {
         'field1': 'field1',
       },
