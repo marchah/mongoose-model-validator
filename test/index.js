@@ -15,6 +15,7 @@ describe('Mongoose Model Validator ->', () => {
     modelName: 'Model1',
     plugins: 'invalid',
     validation: {
+      unique: [],
       custom: [],
       enum: [],
     },
@@ -24,6 +25,7 @@ describe('Mongoose Model Validator ->', () => {
     plugins: ['timestamp', 'invalid', 'creator', 'elastic'],
     validation: {
       required: ['types', 'name', 'company'],
+      unique: ['types', 'email', 'fax', 'company'],
       enum: {
         'types': ['consignee', 'invalid', 'notify'],
         'description': ['K', 'UK'],
@@ -44,11 +46,12 @@ describe('Mongoose Model Validator ->', () => {
       },
     },
   }));
-  describe('Test 3 ->', lib(Model3, {
+  describe('Test 4 ->', lib(Model3, {
     modelName: 'Model3',
     plugins: [],
     validation: {
       required: ['field3', 'field4.nested_field3', 'field5', 'field5.nested_field3', 'field7', 'field8', 'field9.nested_field3', 'field10', 'field10.nested_field3', 'field11', 'field12'],
+      unique: ['field10'],
       enum: {
         'field1': 'field1',
       },
