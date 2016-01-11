@@ -17,8 +17,9 @@ describe('Mongoose Model Validator ->', () => {
     validation: {
       unique: [],
       default: [],
-      custom: [],
       enum: [],
+      min: [],
+      custom: [],
     },
   }));
   describe('Test 3 ->', lib(Model1, {
@@ -34,6 +35,10 @@ describe('Mongoose Model Validator ->', () => {
       enum: {
         'types': ['consignee', 'invalid', 'notify'],
         'description': ['K', 'UK'],
+      },
+      min: {
+        'phone': 10,
+        'fax': 21,
       },
       custom: {
         'should throw: Error: done() invoked with non-Error: custom done()': (done) => {
