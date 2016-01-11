@@ -19,6 +19,7 @@ describe('Mongoose Model Validator ->', () => {
       default: [],
       enum: [],
       min: [],
+      max: [],
       custom: [],
     },
   }));
@@ -38,6 +39,10 @@ describe('Mongoose Model Validator ->', () => {
       },
       min: {
         'phone': 10,
+        'fax': 21,
+      },
+      max: {
+        'phone': 50,
         'fax': 21,
       },
       custom: {
