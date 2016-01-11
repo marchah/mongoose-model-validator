@@ -20,6 +20,7 @@ describe('Mongoose Model Validator ->', () => {
       enum: [],
       min: [],
       max: [],
+      minlength: [],
       custom: [],
     },
   }));
@@ -44,6 +45,10 @@ describe('Mongoose Model Validator ->', () => {
       max: {
         'phone': 50,
         'fax': 21,
+      },
+      minlength: {
+        'email': 21,
+        'name': 2,
       },
       custom: {
         'should throw: Error: done() invoked with non-Error: custom done()': (done) => {
