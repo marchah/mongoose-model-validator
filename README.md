@@ -30,6 +30,7 @@ toValidate Syntax
   virtualFields: <Object<String(virtual field name), Function>>,
   methods: <Object<String(method name), Function>>,
   statics: <Object<String(method name), Function || value>>,
+  enum: <Object<String(method name), Function || null>>,
 }
 ````
 
@@ -109,6 +110,10 @@ describe('Contact ->', modelValidator(Contact, {
         expect(tmp.test()).to.eql('statics test');
       },
     },
+    'pre.save': null,
+    'pre.remove': () => {
+      // do test
+    },
 }));
 ````
 
@@ -122,11 +127,17 @@ Methods and Statics
 
 You can overwrite the test for the methods/statics of a plugin used in a model by simply add a test in the methods or statics object.
 
+Events
+------
+if value is null, the test will be mark as `pending` by mocha
+For the moment the events aren't automatically detected, so if you don't declare it you know be informed that it isn't tested.
+For the moment use [rewire](https://www.npmjs.com/package/rewire) to test
+
 Functions
 ---------
 
 To test asynchronous, simply invoke the callback when your test is complete. By adding a callback (usually named done).
-(it's mocha callback) http://mochajs.org/#asynchronous-code
+(it's [mocha callback](http://mochajs.org/#asynchronous-code)) 
 
 Required field
 --------------
