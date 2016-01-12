@@ -18,8 +18,13 @@ toValidate Syntax
   plugins: <Array<String(plugin name)>>, // supported plugins: ['creator', 'elastic', 'file', 'timestamp', 'unique'] (not fully supported yet)
   schema: {
     required: <Array<String(field name)>>, // required field names
+    unique: <Array<String(field name)>>, // required field names
+    default: <Object<String(field name), String(value)>>
     enum: <Object<String(field name), Array>>
-    // TODO: other checks
+    min: <Object<String(field name), Number(value)>>
+    max: <Object<String(field name), Number(value)>>
+    minlength: <Object<String(field name), Number(value)>>
+    maxlength: <Object<String(field name), Number(value)>>
     custom: <Object<String(test title), Function>>,
   },
   virtualFields: <Object<String(virtual field name), Function>>, // virtual field names
@@ -39,9 +44,29 @@ describe('Contact ->', modelValidator(Contact, {
     plugins: ['timestamp', 'creator', 'elastic'],
     schema: {
       required: ['field3', 'field4.nested_field3', 'field5'],
+      unique: ['field3', 'field4.nested_field1'],
+      default: {
+        'field3': 'Unknown',
+      },
       enum: {
         'types': ['consignee', 'invalid', 'notify'],
         'description': ['K', 'UK'],
+      },
+      min: {
+        'phone': 10,
+        'fax': 21,
+      },
+      max: {
+        'phone': 50,
+        'fax': 21,
+      },
+      minlength: {
+        'email': 21,
+        'name': 2,
+      },
+      maxlength: {
+        'address': 42,
+        'email': 42,
       },
       custom: {
         'should throw: Error: done() invoked with non-Error: custom done()': (done) => {
@@ -60,6 +85,8 @@ describe('Contact ->', modelValidator(Contact, {
     },
     virtualFields: {
     'fullname': (done) => {
+      const tmp = MyModel();
+      expect(tmp.fullname).to.eql('first Last');
       done();
     },
   },
@@ -70,7 +97,7 @@ Functions
 ---------
 
 To test asynchronous, simply invoke the callback when your test is complete. By adding a callback (usually named done).
-(it's mocha callback) http://mochajs.org/#synchronous-code
+(it's mocha callback) http://mochajs.org/#asynchronous-code
 
 Required field
 --------------
@@ -80,4 +107,3 @@ for field with required is a function, the field is conciderated as `required ==
 TODO
 ----
 * required isn't working and a lot of verifications are missing
-* virtualFields only check if the virtual field exist but doesn't validate the function
