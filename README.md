@@ -27,7 +27,8 @@ toValidate Syntax
     maxlength: <Object<String(field name), Number(value)>>
     custom: <Object<String(test title), Function>>,
   },
-  virtualFields: <Object<String(virtual field name), Function>>, // virtual field names
+  virtualFields: <Object<String(virtual field name), Function>>,
+  virtualFields: <Object<String(method name), Function>>,
 }
 ````
 
@@ -84,12 +85,18 @@ describe('Contact ->', modelValidator(Contact, {
       },
     },
     virtualFields: {
-    'fullname': (done) => {
-      const tmp = MyModel();
-      expect(tmp.fullname).to.eql('first Last');
-      done();
+      'fullname': (done) => {
+        const tmp = MyModel();
+        expect(tmp.fullname).to.eql('first Last');
+        done();
+      },
     },
-  },
+    methods: {
+      test: () => {
+        const tmp = MyModel();
+        expect(tmp.test()).to.eql('test');
+      },
+    },
 }));
 ````
 
