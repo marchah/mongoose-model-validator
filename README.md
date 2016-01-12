@@ -22,6 +22,7 @@ toValidate Syntax
     // TODO: other checks
     custom: <Object<String(test title), Function>>,
   },
+  virtualFields: <Array<String(field name)>>, // virtual field names
 }
 ````
 
@@ -57,6 +58,7 @@ describe('Contact ->', modelValidator(Contact, {
         },
       },
     },
+    virtualFields: ['fullname'],
   },
 }));
 ````
