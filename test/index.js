@@ -27,6 +27,7 @@ describe('Mongoose Model Validator ->', () => {
     virtualFields: [],
     methods: [],
     statics: [],
+    events: [],
   }));
   describe('Test 3 ->', lib(Model1, {
     modelName: 'Model1',
@@ -85,6 +86,12 @@ describe('Mongoose Model Validator ->', () => {
         expect(Model1.test()).to.eql('static test');
       },
     },
+    events: {
+      'pre.save': null,
+      'pre.remove': () => {
+        
+      },
+    }
   }));
   describe('Test 4 ->', lib(Model3, {
     modelName: 'Model3',
