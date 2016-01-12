@@ -30,7 +30,7 @@ toValidate Syntax
   virtualFields: <Object<String(virtual field name), Function>>,
   methods: <Object<String(method name), Function>>,
   statics: <Object<String(method name), Function || value>>,
-  enum: <Object<String(method name), Function || null>>,
+  events: <Object<String(method name), Function || null>>,
 }
 ````
 
