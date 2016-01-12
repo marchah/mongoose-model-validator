@@ -16,7 +16,7 @@ toValidate Syntax
 {
   modelName: <String>,
   plugins: <Array<String(plugin name)>>, // supported plugins: ['creator', 'elastic', 'file', 'timestamp', 'unique'] (not fully supported yet)
-  validation: {
+  schema: {
     required: <Array<String(field name)>>, // required field names
     enum: <Object<String(field name), Array>>
     // TODO: other checks
@@ -36,7 +36,7 @@ const Contact = require('server/app/models/user/contact');
 describe('Contact ->', modelValidator(Contact, {
     modelName: 'Contact',
     plugins: ['timestamp', 'creator', 'elastic'],
-    validation: {
+    schema: {
       required: ['field3', 'field4.nested_field3', 'field5'],
       enum: {
         'types': ['consignee', 'invalid', 'notify'],
