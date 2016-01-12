@@ -26,6 +26,7 @@ describe('Mongoose Model Validator ->', () => {
     },
     virtualFields: [],
     methods: [],
+    statics: [],
   }));
   describe('Test 3 ->', lib(Model1, {
     modelName: 'Model1',
@@ -75,7 +76,13 @@ describe('Mongoose Model Validator ->', () => {
     methods: {
       test: () => {
         const tmp = Model1();
-        expect(tmp.test()).to.eql('test');
+        expect(tmp.test()).to.eql('method test');
+      },
+    },
+    statics: {
+      ROLES: ['consignee', 'shipper', 'notify'],
+      test: () => {
+        expect(Model1.test()).to.eql('static test');
       },
     },
   }));
@@ -107,6 +114,11 @@ describe('Mongoose Model Validator ->', () => {
       'fullname': () => {
         const tmp = Model3();
         expect(tmp.fullname).to.eql('first Last');
+      },
+    },
+    statics: {
+      ROLES: () => {
+        expect(Model1.ROLES).to.eql(['consignee', 'shipper', 'notify']);
       },
     },
   }));
