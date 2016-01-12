@@ -67,3 +67,8 @@ Required field
 --------------
 
 for field with required is a function, the field is conciderated as `required === true`
+
+TODO
+----
+* required isn't working and a lot of verifications are missing
+* virtualFields only check if the virtual field exist but doesn't validate the function
