@@ -24,6 +24,7 @@ describe('Mongoose Model Validator ->', () => {
       maxlength: [],
       custom: [],
     },
+    virtualFields: {},
   }));
   describe('Test 3 ->', lib(Model1, {
     modelName: 'Model1',
@@ -95,5 +96,6 @@ describe('Mongoose Model Validator ->', () => {
         'field1': 'field1',
       },
     },
+    virtualFields: ['fullname'],
   }));
 });
