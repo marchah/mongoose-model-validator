@@ -28,7 +28,8 @@ toValidate Syntax
     custom: <Object<String(test title), Function>>,
   },
   virtualFields: <Object<String(virtual field name), Function>>,
-  virtualFields: <Object<String(method name), Function>>,
+  methods: <Object<String(method name), Function>>,
+  statics: <Object<String(method name), Function || value>>,
 }
 ````
 
@@ -94,11 +95,27 @@ describe('Contact ->', modelValidator(Contact, {
     methods: {
       test: () => {
         const tmp = MyModel();
-        expect(tmp.test()).to.eql('test');
+        expect(tmp.test()).to.eql('method test');
+      },
+    },
+    statics: {
+      ROLES: ['consignee', 'shipper', 'notify'],
+      // or
+      ROLES: () => {
+        expect(MyModel.ROLES).to.eql(['consignee', 'shipper', 'notify']);
+      },
+      test: () => {
+        const tmp = MyModel();
+        expect(tmp.test()).to.eql('statics test');
       },
     },
 }));
 ````
+
+Statics
+-------
+
+if statics it's a value, you have the choice to pass only the expected value or a function if you want to do custom test.
 
 Methods and Statics
 -------------------
