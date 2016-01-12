@@ -24,7 +24,7 @@ describe('Mongoose Model Validator ->', () => {
       maxlength: [],
       custom: [],
     },
-    virtualFields: {},
+    virtualFields: [],
   }));
   describe('Test 3 ->', lib(Model1, {
     modelName: 'Model1',
@@ -96,6 +96,11 @@ describe('Mongoose Model Validator ->', () => {
         'field1': 'field1',
       },
     },
-    virtualFields: ['fullname'],
+    virtualFields: {
+      'fullname': () => {
+        const tmp = Model3();
+        expect(tmp.fullname).to.eql('first Last');
+      },
+    },
   }));
 });
