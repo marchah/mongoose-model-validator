@@ -25,7 +25,7 @@ toValidate Syntax
     max: <Object<String(field name), Number(value)>>
     minlength: <Object<String(field name), Number(value)>>
     maxlength: <Object<String(field name), Number(value)>>
-    customs: <Object<String(test title), Function>>,
+    custom: <Object<String(test title), Function>>,
   },
   virtualFields: <Object<String(virtual field name), Function>>,
   methods: <Object<String(method name), Function>>,
@@ -71,7 +71,7 @@ describe('Contact ->', modelValidator(Contact, {
         'address': 42,
         'email': 42,
       },
-      customs: {
+      custom: {
         'should throw: Error: done() invoked with non-Error: custom done()': (done) => {
           done('custom done()');
         },
