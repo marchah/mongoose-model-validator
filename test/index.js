@@ -10,7 +10,7 @@ describe('Mongoose Model Validator ->', () => {
   require('./helpers.spec.js');
   require('./schemaAnalyzer.spec.js');
 
-  describe('Test 1 ->', lib(Model1, {}));
+ describe('Test 1 ->', lib(Model1, {}));
   describe('Test 2 ->', lib(Model1, {
     modelName: 'Model1',
     plugins: 'invalid',
@@ -25,6 +25,7 @@ describe('Mongoose Model Validator ->', () => {
       custom: [],
     },
     virtualFields: [],
+    methods: [],
   }));
   describe('Test 3 ->', lib(Model1, {
     modelName: 'Model1',
@@ -69,6 +70,12 @@ describe('Mongoose Model Validator ->', () => {
         'should validate modelName': () => {
           expect(Model1.modelName).to.eql('Model1');
         },
+      },
+    },
+    methods: {
+      test: () => {
+        const tmp = Model1();
+        expect(tmp.test()).to.eql('test');
       },
     },
   }));
