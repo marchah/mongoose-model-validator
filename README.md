@@ -22,7 +22,7 @@ toValidate Syntax
     // TODO: other checks
     custom: <Object<String(test title), Function>>,
   },
-  virtualFields: <Array<String(field name)>>, // virtual field names
+  virtualFields: <Object<String(virtual field name), Function>>, // virtual field names
 }
 ````
 
@@ -58,10 +58,19 @@ describe('Contact ->', modelValidator(Contact, {
         },
       },
     },
-    virtualFields: ['fullname'],
+    virtualFields: {
+    'fullname': (done) => {
+      done();
+    },
   },
 }));
 ````
+
+Functions
+---------
+
+To test asynchronous, simply invoke the callback when your test is complete. By adding a callback (usually named done).
+(it's mocha callback) http://mochajs.org/#synchronous-code
 
 Required field
 --------------
