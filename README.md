@@ -100,6 +100,11 @@ describe('Contact ->', modelValidator(Contact, {
 }));
 ````
 
+Methods and Statics
+-------------------
+
+You can overwrite the test for the methods/statics of a plugin used in a model by simply add a test in the methods or statics object.
+
 Functions
 ---------
 
