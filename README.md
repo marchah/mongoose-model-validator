@@ -7,7 +7,7 @@ Usage
 ````javascript
 const modelValidator = require('mongoose-model-validator');
 
-describe(Title<String>, modelValidator(model<MongooseModel>, toValidate<Object>));
+describe(Title<String>, modelValidator(model<MongooseModel>, toValidate<Object>[, options<Object>]));
 ````
 
 toValidate Syntax
@@ -31,6 +31,15 @@ toValidate Syntax
   methods: <Object<String(method name), Function>>,
   statics: <Object<String(method name), Function || value>>,
   events: <Object<String(method name), Function || null>>,
+}
+````
+
+options Syntax (optional)
+----------------
+````javascript
+{
+  [before: <Function>], // mocha hook (http://mochajs.org/#hooks)
+  [after: <Function>], // mocha hook (http://mochajs.org/#hooks)
 }
 ````
 
