@@ -29,6 +29,8 @@ describe('Mongoose Model Validator ->', () => {
     statics: [],
     events: [],
     invalid: [],
+  }, {
+    after: true,
   }));
   describe('Test 3 ->', lib(Model1, {
     modelName: 'Model1',
@@ -94,6 +96,14 @@ describe('Mongoose Model Validator ->', () => {
 
       },
     }
+  }, {
+    before: () => {
+      console.log('Before');
+    },
+    after: (done) => {
+      console.log('After');
+      done();
+    },
   }));
   describe('Test 4 ->', lib(Model3, {
     modelName: 'Model3',
