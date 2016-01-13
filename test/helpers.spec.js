@@ -24,4 +24,17 @@ describe('Helpers ->', () => {
   describe('Get Statics -> ', () => {
     it('should return statics');
   });
+  describe('Callback', () => {
+    it('should call done', (done) => {
+      helpers.callback(() => {
+        expect(true).to.be.true;
+      }, done);
+    });
+    it('should call done', (done) => {
+      helpers.callback((done2) => {
+        expect(done2).to.be.a('function');
+        done2();
+      }, done);
+    });
+  });
 });
