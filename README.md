@@ -147,3 +147,5 @@ for field with required is a function, the field is conciderated as `required ==
 TODO
 ----
 * required isn't working and a lot of verifications are missing
+* validate: add automatic detection and field in `toValidate.schema`
+* events: add automatic detection
