@@ -38,8 +38,8 @@ options Syntax (optional)
 ----------------
 ````javascript
 {
-  [before: <Function>], // [mocha hook](http://mochajs.org/#hooks)
-  [after: <Function>], // [mocha hook](http://mochajs.org/#hooks)
+  [before: <Function>], // mocha hook (http://mochajs.org/#hooks)
+  [after: <Function>], // mocha hook (http://mochajs.org/#hooks)
 }
 ````
 
