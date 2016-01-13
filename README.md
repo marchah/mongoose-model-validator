@@ -40,6 +40,8 @@ options Syntax (optional)
 {
   [before: <Function>], // mocha hook (http://mochajs.org/#hooks)
   [after: <Function>], // mocha hook (http://mochajs.org/#hooks)
+  [beforeEach: <Function>], // mocha hook (http://mochajs.org/#hooks)
+  [afterEach: <Function>], // mocha hook (http://mochajs.org/#hooks)
 }
 ````
 
@@ -123,6 +125,15 @@ describe('Contact ->', modelValidator(Contact, {
     'pre.remove': () => {
       // do test
     },
+}, {
+  before: (done) => {
+    MyModel.remove().then(() => {
+      done();
+    });
+  },
+  after: () => {
+    console.log('AFTER MyModel');
+  },
 }));
 ````
 
