@@ -28,6 +28,7 @@ describe('Mongoose Model Validator ->', () => {
     methods: [],
     statics: [],
     events: [],
+    invalid: [],
   }));
   describe('Test 3 ->', lib(Model1, {
     modelName: 'Model1',
@@ -39,6 +40,7 @@ describe('Mongoose Model Validator ->', () => {
         'types': 'consignee',
         'address': 'Unknown',
       },
+      unknow: [],
       enum: {
         'types': ['consignee', 'invalid', 'notify'],
         'description': ['K', 'UK'],
@@ -89,7 +91,7 @@ describe('Mongoose Model Validator ->', () => {
     events: {
       'pre.save': null,
       'pre.remove': () => {
-        
+
       },
     }
   }));
