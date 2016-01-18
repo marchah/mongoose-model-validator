@@ -976,7 +976,7 @@ describe('Schema Analyzer -> ', () => {
       expect(analyzed).to.be.an('object');
       expect(analyzed.unique).to.be.an('object');
       expect(analyzed.unique.ALL).to.be.an('array');
-      expect(analyzed.unique.ALL).to.be.eql(['types', 'email', 'fax', 'company']);
+      expect(analyzed.unique.ALL).to.be.eql(['types', 'email', 'fax', 'company', 'increment']);
 
       expect(analyzed).to.be.an('object');
       expect(analyzed.enum).to.be.an('object');
@@ -994,7 +994,7 @@ describe('Schema Analyzer -> ', () => {
       expect(analyzed.maxlength.ALL).to.be.eql(['email', 'address']);
 
       expect(analyzed.schema).that.is.an('object');
-      expect((_.keys(analyzed.schema)).length).to.eql(12);
+      expect((_.keys(analyzed.schema)).length).to.eql(13);
       expect(analyzed.schema).to.have.property('types').that.is.an('object').to.eql({required: true, default: 'consignee', unique: true, enum: [ 'consignee', 'shipper', 'notify' ] });
       expect(analyzed.schema).to.have.property('description').that.is.an('object').to.eql({ enum: [ 'K', 'UK' ] });
 
@@ -1028,6 +1028,7 @@ describe('Schema Analyzer -> ', () => {
       expect(analyzed.schema).to.have.property('_created').that.is.an('object').to.be.empty;
       expect(analyzed.schema).to.have.property('_updated').that.is.an('object').to.be.empty;
       expect(analyzed.schema).to.have.property('creator').that.is.an('object').to.be.empty;
+      expect(analyzed.schema).to.have.property('increment').that.is.an('object').to.eql({ unique: true });
     });
 
     it('should validate fields module 2', () => {

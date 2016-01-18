@@ -34,7 +34,7 @@ describe('Mongoose Model Validator ->', () => {
   }));
   describe('Test 3 ->', lib(Model1, {
     modelName: 'Model1',
-    plugins: ['timestamp', 'invalid', 'creator', 'elastic'],
+    plugins: ['timestamp', 'invalid', 'creator', 'elastic', 'increment'],
     schema: {
       required: ['types', 'name', 'company'],
       unique: ['types', 'email', 'fax', 'company'],
