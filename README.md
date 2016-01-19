@@ -15,7 +15,7 @@ toValidate Syntax
 ````javascript
 {
   modelName: <String>,
-  plugins: <Array<String(plugin name)>>, // supported plugins: ['creator', 'elastic', 'file', 'timestamp', 'unique'] (not fully supported yet)
+  plugins: <Array<String(plugin name)>>, // (not fully supported yet)
   schema: {
     required: <Array<String(field name)>>, // required field names
     unique: <Array<String(field name)>>, // required field names
@@ -136,6 +136,10 @@ describe('Contact ->', modelValidator(Contact, {
   },
 }));
 ````
+
+Plugins
+-------
+supported plugins: ['creator', 'elastic', 'file', 'timestamp', 'unique', 'version', 'increment', 'data', 'paginate']
 
 Statics
 -------
