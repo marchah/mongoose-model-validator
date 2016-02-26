@@ -62,7 +62,7 @@ describe('Contact ->', modelValidator(Contact, {
       default: {
         'field3': 'Unknown',
         'field4': (fctToValidate, done) => {
-          expect(fctToValidate()).to.be.an('object).and.be.empty;
+          expect(fctToValidate()).to.be.an('object').and.be.empty;
           done();
         },
       },
