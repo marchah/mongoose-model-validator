@@ -19,7 +19,7 @@ toValidate Syntax
   schema: {
     required: <Array<String(field name)>>, // required field names
     unique: <Array<String(field name)>>, // required field names
-    default: <Object<String(field name), String(value)>>
+    default: <Object<String(field name), String(value) || Function >>
     enum: <Object<String(field name), Array>>
     min: <Object<String(field name), Number(value)>>
     max: <Object<String(field name), Number(value)>>
@@ -61,6 +61,10 @@ describe('Contact ->', modelValidator(Contact, {
       unique: ['field3', 'field4.nested_field1'],
       default: {
         'field3': 'Unknown',
+        'field4': (fctToValidate, done) => {
+          expect(fctToValidate()).to.be.an('object).and.be.empty;
+          done();
+        },
       },
       enum: {
         'types': ['consignee', 'invalid', 'notify'],
